@@ -1,6 +1,6 @@
 FROM openjdk:latest
 
-ADD target/multi-sec.jar /app/
+ADD ./target/multi-sec.jar /app/
 
 EXPOSE 8080
 

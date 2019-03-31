@@ -1,0 +1,9 @@
+https://franklingu.github.io/programming/2016/11/19/grep-and-show-capture-group-only/
+
+
+    <If "%{HTTP_COOKIE} =~ /sticky=[\d\.]+;/">
+        SetEnvIf Cookie "sticky=([\d\.]+)" app_ip=$1
+    </If>
+    <Else>
+        SetEnv app_ip app
+    </Else>

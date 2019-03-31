@@ -11,17 +11,9 @@ services:
     volumes: 
       - ./proxy/conf:/opt/proxy-conf
 
-  # Two Spring Boot applications each deployed with a different context
-  app1:
-    container_name: app1
+  app:
+    container_name: app
     build: 
       context: .
-    environment: 
-      - CONTEXT_PATH=/app1
-
-  app2:
-    container_name: app2
-    build: 
-      context: .
-    environment: 
-      - CONTEXT_PATH=/app2
+    volumes: 
+      - ./target/multi-sec.jar:/app/multi-sec.jar

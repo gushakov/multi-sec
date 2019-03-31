@@ -1,0 +1,30 @@
+version: "3.7"
+services:
+
+  # Apache HTTP proxy, will forward requests to Boot applications
+
+  # from https://docs.docker.com/v17.12/docker-cloud/apps/service-links/#dns-hostnames-vs-service-links
+  proxy:
+    image: proxy:0.14
+    ports:
+      - "80:80"
+    deploy:
+      replicas: 1
+      restart_policy:
+        condition: none
+    networks:
+      - overlay
+
+
+  app:
+    image: app:0.2
+    deploy:
+      replicas: 2
+      endpoint_mode: dnsrr
+      restart_policy:
+        condition: none
+    networks:
+      - overlay
+
+networks:
+  overlay:
